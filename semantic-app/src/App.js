@@ -1,19 +1,17 @@
-import './App.css';
+import './style/App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <p>Super Semantic App!!!!!</p>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/antonycrimi"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Best site ever
         </a>
       </header>
     </div>
