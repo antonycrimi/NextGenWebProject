@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 const endpointUrl = 'https://query.wikidata.org/sparql';
 const sparqlQuery = `#Films réalisés en 2017
 SELECT DISTINCT ?item ?itemLabel WHERE {
@@ -41,6 +42,7 @@ function Infos() {
 
     return (
         <div>
+          <Link to="/">Clique pour retourner au menu</Link>
           <h2>Infos</h2>
           <h4>Film = {listItems}</h4>
         </div>
