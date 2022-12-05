@@ -6,8 +6,9 @@ const Layout = () => {
       <nav>
         <ul>
           <li>
-            <Link to="/list">Clique pour aller voir tes préferences</Link><br/>
-            <Link to="/create">Clique ici pour creer un compte</Link>
+          <Link to="/create">Click to create an account</Link><br/><br/><br/>
+            <Link to="/listseries">Click to see your series</Link><br/>
+            <Link to="/listfilm">Click to see your film</Link><br/>
           </li>
         </ul>
       </nav>
