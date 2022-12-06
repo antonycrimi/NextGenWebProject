@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Component } from 'react';
+const axios = require('axios').default;
 
 
 class ListSeries extends Component {
@@ -25,6 +26,16 @@ class ListSeries extends Component {
   handleSubmit(event) {
     alert('Name: ' + this.state.name + ' - Db: ' + this.state.db);
     event.preventDefault();
+    axios({
+      method: 'post',
+      url: 'http://localhost:3030/lireserie',
+      data: {
+        name: this.state.name,
+        db: this.state.db
+      }
+    }).then(function (response) {
+      console.log(response);
+    });
   }
 
 render() {

@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Component } from 'react';
 
+const axios = require('axios').default;
+
 
 class Create extends Component {
 
@@ -40,7 +42,16 @@ class Create extends Component {
   handleSubmit(event) {
     alert('Name: ' + this.state.name + ' - Series: ' + this.state.seriesdb  + ' - Film: ' + this.state.filmdb +' - Series: ' + this.state.serieswiki  + ' - Film: ' + this.state.filmwiki);
     event.preventDefault();
-  }
+    axios({
+      method: 'post',
+      url: 'http://localhost:3030/ecrire',
+      data: {
+        info: "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" + '\n' + ":PersonalInfo      rdf:type  :person" + '\n' + ":PersonalInfo      :name    :"+ this.state.name + '\n' + ":FilmInfo     :gender  :"+ this.state.filmdb + '\n' + ":FilmInfo      :gender  :" + this.state.filmwiki + '\n' + ":SeriesInfo     :gender  :"+ this.state.seriesdb + '\n' + ":SeriesInfo      :gender  :" + this.state.serieswiki + '\n',
+        name: this.state.name
+      }
+    });
+   }
+  
 
 render() {
 
