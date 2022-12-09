@@ -1,13 +1,18 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
+
 var ulr = document.URL.split('/')
 const endpointUrl = 'https://query.wikidata.org/sparql';
-const sparqlQuery = `#Films réalisés en 2017
+const sparqlQuery = `#Series
 SELECT DISTINCT ?item ?itemLabel WHERE {
-  ?item wdt:P31 wd:Q11424.
-  ?item wdt:P577 ?pubdate.
-  FILTER((?pubdate >= "2010-01-01T00:00:00Z"^^xsd:dateTime) && (?pubdate <= "2012-12-31T00:00:00Z"^^xsd:dateTime))
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE], en". }
+  {
+    SELECT DISTINCT ?item WHERE {
+      ?item p:P136 ?statement0.
+      ?statement0 (ps:P136/(wdt:P279*)) `+ ulr[7] + `.
+    }
+    LIMIT 10
+  }
 }`;
 
 class getInfo {
@@ -43,9 +48,11 @@ function InfosSeriesWiki() {
 
     return (
         <div>
-          <Link to="/">Click to go back to the menu</Link>
-          <h2>Infos</h2>
-          <h4>Series = {listItems}</h4>
+          <Link className="link" to="/">Menu</Link>
+          <h2>Your series :</h2>
+          {listItems.map((film) => (
+        <h3 className='filmseries'> - {film} - </h3>
+      ))}
         </div>
     );
 }

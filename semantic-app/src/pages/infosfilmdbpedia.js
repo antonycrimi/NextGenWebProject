@@ -27,7 +27,7 @@ WHERE
 
         FILTER ( LANG ( ?abstract ) = 'en' )
       }
-LIMIT 100`};
+LIMIT 10`};
 
 function InfosFilmDb(){
   const [infoData, setInfoData] = useState(["error"]);
@@ -62,9 +62,11 @@ function InfosFilmDb(){
 
   return (
     <div>
-      <Link to="/">Click to go back to the menu</Link>
-      <h2>Infos</h2>
-      <h4>Film = {listItems}</h4>
+      <Link className="link" to="/">Menu</Link>
+      <h2>Your film :</h2>
+      {listItems.map((film) => (
+        <h3 className='filmseries'> - {film} - </h3>
+      ))}
     </div>
 );
 }

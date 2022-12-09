@@ -9,7 +9,7 @@ app.use(bp.json())
 app.use(bp.urlencoded({ extended: true }))
 
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3001"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
@@ -25,7 +25,7 @@ app.post('/lirefilm', (req, res) => {
     if (req.body.db == "DBpedia") {
       res.send(information[11]);
     } else {
-      res.send(information[14]);
+      res.send(information[14] + ':' + information[15]);
     }
 });;
 });
@@ -35,9 +35,9 @@ app.post('/lireserie', (req, res) => {
     const information = data.replace(/\s/g,'').split(':');
     const name = information[8];
     if (req.body.db == "DBpedia") {
-      res.send(information[17]);
+      res.send(information[18]);
     } else {
-      res.send(information[20]);
+      res.send(information[21]+ ':' + information[22]);
     }
 });;
 });

@@ -9,15 +9,19 @@ class ListSeries extends Component {
   constructor(props) {
     super(props);
     this.state = {db: ''};
-    this.state = {name: ''};
+    this.state = {name: 'user'};
 
     this.handleChangeName = this.handleChangeName.bind(this);
     this.handleChangeDb = this.handleChangeDb.bind(this);
+    this.handleChangeGender = this.handleChangeGender.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChangeName(event) {
     this.setState({name: event.target.value});
+  }
+  handleChangeGender(event) {
+    this.setState({gender: event});
   }
   handleChangeDb(event) {
     this.setState({db: event.target.value});
@@ -33,27 +37,29 @@ class ListSeries extends Component {
         name: this.state.name,
         db: this.state.db
       }
-    }).then(function (response) {
-      console.log(response);
+    }).then((response) => {
+      this.handleChangeGender(response.data);
     });
   }
 
 render() {
 
     return (
-        <div>
-          <Link to="/">Click to go back to the menu</Link>
+        <div className='list'>
+          <Link className="link" to="/">Menu</Link>
+          <h5 className='advertise'>! Do not forget to create an account !</h5>
           <h1>Choose your database</h1>
-          <form onSubmit={this.handleSubmit}>
+          <form className='textoption' onSubmit={this.handleSubmit}>
             <label>
               Name: <input type="text" name='name' value={this.state.name} onChange={this.handleChangeName} />
             </label><br/>
             Database: <select value={this.state.db} onChange={this.handleChangeDb}>
+              <option selected value="Empty">Empty</option>
               <option value="DBpedia">DBpedia</option>
               <option value="Wikidata">Wikidata</option>
             </select> <br/>
-            <input type="submit" value="Submit" /><br/>
-            <a href={"/list/infos/"+ this.state.db + "/series/" + "sf"}>See your series</a><br/>
+            <input className='button' type="submit" value="Submit" /><br/>
+            <a className="link" href={"/list/infos/"+ this.state.db + "/series/" + this.state.gender}>See your series</a><br/>
           </form>
         </div>
     );

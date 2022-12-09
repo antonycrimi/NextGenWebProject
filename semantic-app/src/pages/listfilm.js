@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Component } from 'react';
 const axios = require('axios').default;
@@ -8,7 +8,7 @@ class ListFilm extends Component {
   constructor(props) {
     super(props);
     this.state = {db: ''};
-    this.state = {name: ''};
+    this.state = {name: 'user'};
 
 
     this.handleChangeName = this.handleChangeName.bind(this);
@@ -21,7 +21,7 @@ class ListFilm extends Component {
     this.setState({name: event.target.value});
   }
   handleChangeGender(event) {
-    this.setState({gender: event.target.value});
+    this.setState({gender: event});
   }
   handleChangeDb(event) {
     this.setState({db: event.target.value});
@@ -36,30 +36,31 @@ class ListFilm extends Component {
       data: {
         name: this.state.name,
         db: this.state.db
+
       }
-    }).then(function (response) {
-      window.name = response.data;
-      console.log(window.name);
+    }).then((response) => {
+      this.handleChangeGender(response.data);
     });
-    console.log(window.name);
   }
 
 render() {
 
     return (
         <div>
-          <Link to="/">Click to go back to the menu</Link>
+          <Link className="link" to="/">Menu</Link>
+          <h5 className='advertise'>! Do not forget to create an account !</h5>
           <h1>Choose your database</h1>
-          <form onSubmit={this.handleSubmit}>
+          <form className='textoption' onSubmit={this.handleSubmit}>
             <label>
               Name: <input type="text" name='name' value={this.state.name} onChange={this.handleChangeName} />
             </label><br/>
             Database: <select value={this.state.db} onChange={this.handleChangeDb}>
+              <option selected value="Empty">Empty</option>
               <option value="DBpedia">DBpedia</option>
-              <option value="Wikidata">Wikidata + {window.name}</option>
+              <option value="Wikidata">Wikidata</option>
             </select> <br/>
-            <input type="submit" value="Submit" /><br/>
-            <a href={"/list/infos/"+ this.state.db + "/film/" + window.name}>See your films</a><br/>
+            <input className='button' type="submit" value="Submit" /><br/>
+            <a className="link" href={"/list/infos/"+ this.state.db + "/film/" + this.state.gender}>See your films</a><br/>
           </form>
         </div>
     );

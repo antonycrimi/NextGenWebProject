@@ -13,7 +13,7 @@ class Create extends Component {
     this.state = {seriesdb: ''};
     this.state = {filmdb: ''};
     this.state = {seriesdb: ''};
-    this.state = {name: ''};
+    this.state = {name: 'user'};
 
     this.handleChangeName = this.handleChangeName.bind(this);
     this.handleChangeSeriesDb = this.handleChangeSeriesDb.bind(this);
@@ -57,37 +57,41 @@ render() {
 
     return (
         <div>
-          <Link to="/">Click to go back to the menu</Link>
+          <Link className="link" to="/">Menu</Link>
           <h1>Create your account</h1>
-          <form onSubmit={this.handleSubmit}>
+          <form className='textoption' onSubmit={this.handleSubmit}>
             <label>
               Name: <input type="text" name='name' value={this.state.name} onChange={this.handleChangeName} />
             </label><br/>
             Series gender for DBpedia: <select value={this.state.seriesdb} onChange={this.handleChangeSeriesDb}>
+              <option selected value="Empty">Empty</option>
               <option value="Cringe_comedy">Cringe comedy</option>
               <option value="Epic_fantasy">Epic Fantay</option>
-              <option selected value="Animated_sitcom">Animated</option>
+              <option value="Animated_sitcom">Animated</option>
               <option value="Political_thriller">Political Thriller</option>
             </select> <br/>
             Film gender for DBpedia: <select value={this.state.filmdb} onChange={this.handleChangeFilmDb}>
+              <option selected value="Empty">Empty</option>
               <option value="Adventure_film">Adventure</option>
               <option value="Romantic_comedy">Commedy romantic</option>
-              <option selected value="Supernatural_horror_film">Horror</option>
+              <option value="Supernatural_horror_film">Horror</option>
               <option value="Documentary_film">Documentary</option>
             </select> <br/>
             Series gender for Wikidata: <select value={this.state.serieswiki} onChange={this.handleChangeSeriesWiki}>
-              <option value="Cringe_comedy">Cringe comedy</option>
-              <option value="Epic_fantasy">Epic Fantay</option>
-              <option selected value="Animated_sitcom">Animated</option>
-              <option value="Political_thriller">Political Thriller</option>
+              <option selected value="Empty">Empty</option>
+              <option value="wd:Q7696995">Comedy</option>
+              <option value="wd:Q1366112">Dramatic</option>
+              <option value="wd:Q581714">Animated</option>
+              <option value="wd:Q336059">Science fiction</option>
             </select> <br/>
             Film gender for Wikidata: <select value={this.state.filmwiki} onChange={this.handleChangeFilmWiki}>
-              <option value="Adventure_film">Adventure</option>
-              <option value="Romantic_comedy">Commedy romantic</option>
-              <option selected value="Supernatural_horror_film">Horror</option>
-              <option value="Documentary_film">Documentary</option>
+              <option selected value="Empty">Empty</option>
+              <option value="wd:Q319221">Adventure</option>
+              <option value="wd:Q157443">Commedy</option>
+              <option value="wd:Q200092">Horror</option>
+              <option value="wd:Q188473">Action</option>
             </select> <br/>
-            <input type="submit" value="Submit" />
+            <input  className='button' type="submit" value="Submit" />
           </form>
         </div>
     );

@@ -9,11 +9,14 @@ import InfosSeriesWiki from './pages/infosserieswiki';
 import InfosFilmDb from './pages/infosfilmdbpedia';
 import InfosSeriesDb from './pages/infosseriesdbpedia.js';
 import Create from './pages/create';
+import Errrorundefined from './pages/errorundefined';
+import Errrorname from './pages/errorname';
+import './style/styles.css';
 
 class App extends Component {
   render() {
     return (
-      <div>
+      <div className='header'>
         <h1>Find your film or series</h1>
       <BrowserRouter>
       <Routes>
@@ -25,6 +28,16 @@ class App extends Component {
           <Route path="/list/infos/wikidata/series/:gender" element={<InfosSeriesWiki />} />
           <Route path="/list/infos/dbpedia/film/:gender" element={<InfosFilmDb />} />
           <Route path="/list/infos/dbpedia/series/:gender" element={<InfosSeriesDb />} />
+          <Route path="/list/infos/dbpedia/series/undefined" element={<Errrorundefined />} />
+          <Route path="/list/infos/dbpedia/film/undefined" element={<Errrorundefined />} />
+          <Route path="/list/infos/dbpedia/series/" element={<Errrorname />} />
+          <Route path="/list/infos/dbpedia/film/" element={<Errrorname />} />
+          <Route path="/list/infos/wikidata/series/undefined" element={<Errrorundefined />} />
+          <Route path="/list/infos/wikidata/film/undefined" element={<Errrorundefined />} />
+          <Route path="/list/infos/wikidata/series/" element={<Errrorname />} />
+          <Route path="/list/infos/wikidata/film/" element={<Errrorname />} />
+          <Route path="/list/infos/undefined/series/undefined" element={<Errrorname />} />
+          <Route path="/list/infos/undefined/film/undefined" element={<Errrorname />} />
       </Routes>
     </BrowserRouter>
     </div>
