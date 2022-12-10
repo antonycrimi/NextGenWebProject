@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Component } from 'react';
 const axios = require('axios').default;
 
+//Page for choosing your profile and your db for the series
 
 class ListSeries extends Component {
 
@@ -28,7 +29,6 @@ class ListSeries extends Component {
   }
 
   handleSubmit(event) {
-    alert('Name: ' + this.state.name + ' - Db: ' + this.state.db);
     event.preventDefault();
     axios({
       method: 'post',

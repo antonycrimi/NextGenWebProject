@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { createPath, Link } from 'react-router-dom';
 
+//Displaying page for the film from dbpedia
 
 var ulr = document.URL.split('/')
 var url = new URL("https://dbpedia.org/sparql");

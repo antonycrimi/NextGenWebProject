@@ -3,6 +3,7 @@ const app = express()
 const port = 3030
 const fs = require('fs')
 
+// Page server, to parse and encode the .ttl
 
 const bp = require('body-parser')
 app.use(bp.json())
@@ -23,9 +24,11 @@ app.post('/lirefilm', (req, res) => {
     const information = data.replace(/\s/g,'').split(':');
     const name = information[8];
     if (req.body.db == "DBpedia") {
-      res.send(information[11]);
+      console.log(information[6].replace('rdf', ''));
+      res.send(information[6].replace('rdf', ''));
     } else {
-      res.send(information[14] + ':' + information[15]);
+      console.log(information[9]+ ':' + information[10].replace('rdf', ''));
+      res.send(information[9]+ ':' + information[10].replace('rdf', ''));
     }
 });;
 });
@@ -35,9 +38,11 @@ app.post('/lireserie', (req, res) => {
     const information = data.replace(/\s/g,'').split(':');
     const name = information[8];
     if (req.body.db == "DBpedia") {
-      res.send(information[18]);
+      console.log(information[13].replace('rdf', ''));
+      res.send(information[13].replace('rdf', ''));
     } else {
-      res.send(information[21]+ ':' + information[22]);
+      console.log(information[16]+ ':' + information[17].replace('rdf', ''));
+      res.send(information[16]+ ':' + information[17].replace('rdf', ''));
     }
 });;
 });

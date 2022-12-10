@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
+//Displaying page for the series from wikidata
+
 var ulr = document.URL.split('/')
 const endpointUrl = 'https://query.wikidata.org/sparql';
 const sparqlQuery = `#Series
@@ -37,10 +39,8 @@ function InfosSeriesWiki() {
 
   useEffect(() => {
   async function asyncCall() {
-    
     const result = await queryDispatcher.query( sparqlQuery );
     setInfo(result.results.bindings);
-    //console.log(info);
   }
 
   asyncCall();

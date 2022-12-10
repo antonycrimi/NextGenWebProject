@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
+//Displaying page for the film from wikidata
+
 var ulr = document.URL.split('/')
 const endpointUrl = 'https://query.wikidata.org/sparql';
 const sparqlQuery = `#Films
@@ -36,11 +38,9 @@ function InfosFilmWiki() {
   console.log(listItems);
 
   useEffect(() => {
-  async function asyncCall() {
-    
+  async function asyncCall() {    
     const result = await queryDispatcher.query( sparqlQuery );
     setInfo(result.results.bindings);
-    //console.log(info);
   }
 
   asyncCall();

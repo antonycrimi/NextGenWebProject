@@ -1,5 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 
+//Page principal
+
 const Layout = () => {
   return (
     <>

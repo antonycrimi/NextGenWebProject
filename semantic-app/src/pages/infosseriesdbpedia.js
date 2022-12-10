@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
+//Displaying page for the series from dbpedia
+
 var ulr = document.URL.split('/')
 var url = new URL("https://dbpedia.org/sparql");
   var params = {query:`PREFIX dbo: <http://dbpedia.org/ontology/> 
