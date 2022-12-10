@@ -1,7 +1,0 @@
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-:PersonalInfo      rdf:type  :person
-:PersonalInfo      :name    :Julien
-:FilmInfo     :gender  :Adventure_film
-:FilmInfo      :gender  :Romantic_comedy
-:SeriesInfo     :gender  :Epic_fantasy
-:SeriesInfo      :gender  :Epic_fantasy
